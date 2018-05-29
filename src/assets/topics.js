@@ -154,7 +154,7 @@ const topics = [
   {
     path: '',
     title: 'Deutsch',
-    complete: 10,
+    complete: 40,
   },
   {
     path: 'deutsch',
