@@ -1,5 +1,7 @@
-import { Topic, topics } from './topics';
+import { Topic } from './topics';
 import { Component } from '@angular/core';
+
+declare const topics: Topic[];
 
 @Component({
   selector: 'app-root',

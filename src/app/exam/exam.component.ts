@@ -1,9 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { topics, Topic } from '../topics';
+import { Topic } from '../topics';
 import { timer, Observable } from 'rxjs';
 import { map, tap, timeInterval, take, share, startWith } from 'rxjs/operators';
 
+declare const topics: Topic[];
 const allLetters = 'QWERTZUIOPÜASDFGHJKLÖÄYXCVBNM-';
 
 @Component({

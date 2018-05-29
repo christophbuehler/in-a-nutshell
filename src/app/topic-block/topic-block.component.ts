@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, HostBinding, HostListener, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { MarkdownService } from 'ngx-markdown';
 
-import {topics, Topic, subTopics} from '../topics';
+import { Topic, subTopics} from '../topics';
 import { ElementRef } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+
+declare const topics: Topic[];
 
 @Component({
   selector: 'app-topic-block',
