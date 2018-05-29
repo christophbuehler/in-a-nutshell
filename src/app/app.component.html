@@ -1,11 +1,14 @@
 <mat-toolbar fxLayout="row" fxLayoutAlign="center center">
     <img src="assets/logo.png" alt="Logo in a nutshell">
-    <span fxFlex>in a nutshell</span>
-    <app-exam></app-exam>
+    <span>in a nutshell</span>
 </mat-toolbar>
-
-<div fxFlex class="topics mat-elevation-z4">
+<div fxFlex class="topics mat-elevation-z4" fxLayout="column">
     <app-topic-block
         [topic]="topic"
         *ngFor="let topic of mainTopics"></app-topic-block>
+    <span fxFlex></span>
+    <mat-toolbar class="bottom-toolbar mat-elevation-z4" fxLayout="row">
+        <span fxFlex></span>
+        <app-exam></app-exam>
+    </mat-toolbar>
 </div>
