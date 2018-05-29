@@ -72,7 +72,51 @@ export const topics = <Topic[]>[
                         - Bewahrt Informationen für den Bau und Betrieb der Zelle.
                         - Steuert mit dieser Information die Entwicklung und Aktivität der Zelle.
                         - Verdoppelt das Erbgut vor der Zellteilung.
-                        ...
+                        ![zellkern.png](assets/zellkern.png)
+
+                        #### Endoplasmatisches Reticulum (ER)
+                        - Ein System von Kanälen und flachen sackartigen Hohlräumen. 
+                        - Wird durch eine Membran vom Plasma abgegrenzt.
+                        - Man unterscheidet zwischen rauem und glattem ER. Das Raue ER ist eine Proteinfabrik. Das glatte ER trägt viele Enzyme.
+                        - Herstellung von Membranlipiden.
+                        - Stoffumwandlungen.
+                        ![er.png](assets/er.png)
+
+                        #### Golgi-Apparat (verbundene Dictyosomen)
+                        - Dictyosomen sind Produktionsstätten, Zwischenlager sowie Sortier- und Versandzentralen von Stoffen, meist Proteinen.
+                        ![golgi-apparat.png](assets/golgi-apparat.png)
+                        
+                        #### Vesikel (Tierzelle und Pflanzenzelle ) und Vakuolen (Pflanzenzelle)
+                        - Zur Speicherung und zum Transport von Stoffen.
+                        - Unterschieden wird
+                          - Transportvesikel
+                          - Lysosomen
+                          - Nahrungsvakuole (mit Zellsaft gefüllte Vakuole)
+
+                        #### Ribosomen
+                        - Winzige Kügelchen am rauen ER.
+                        - Aus Proteinen und RNA.
+                        - Dienen als Proteinfabrik der Zelle.
+
+                        #### Cytoskelett
+                        - Ist ein Netzwerk feiner Proteinfäden.
+                        - Stützt die Zelle und stabilisiert ihre innere Struktur durch die Verankerung der Organellen.
+                        - Bestimmt die Form der Zelle wenn keine Zellwand vorhanden ist.
+
+                        #### Chloroplasten
+                        - Nur in grünen Pflanzenteilen (Pflanzenzellen).
+                        - Sie bilden und enthalten den grünen Farbstoff.
+                        - Aufgabe: Photosynthese.
+                        - Die Stapel heissen Grana.
+                        - Das Plasma dazwischen Stroma.
+                        ![chloroplasten.png](assets/chloroplasten.png)
+
+                        #### Mitochondrien
+                        - Zellatmung → Gewinnung von Energie
+                        - Herstellung von ATP 
+                        - Energieumwandlung
+                        - Abbau von Glucose
+                        ![mitochondrien.png](assets/mitochondrien.png)
                         `,
                     },
                 ]
