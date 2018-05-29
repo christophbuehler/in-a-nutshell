@@ -154,7 +154,7 @@ const topics = [
   {
     path: '',
     title: 'Deutsch',
-    complete: 10,
+    complete: 40,
   },
   {
     path: 'deutsch',
@@ -192,11 +192,13 @@ const topics = [
     - Zusammenfassung
     - Beschreibung von Grafiken
     - Begriffsdefinition als Lexikoneintrag
+
     #### Argumentative / Analytische Textart
     - Stellungnahme
     - Entgegnung
     - Problemarbeit / Positionspapier
     - Texterörterung / Textkritik
+
     #### Literarische / Analytische Textart
     - Inhaltsangabe
     - Entgegnung
@@ -208,6 +210,20 @@ const topics = [
     path: 'deutsch/schriftliche-textsorten',
     title: 'Leitfaden: Bericht',
     body: `
+    | HEADER | Textsorte
+    Daten: Anlass, Auftraggeber, Verfasser, Datum… |
+    | --- | --- |
+    | THEMA | Titel (Medienberichte verwenden Schlagzeilen und Titel) |
+    | ABSRACT | Zusammenfassung, Vorspann, Nachrichtenkopf, Lead |
+    | WAS WARUM / WOZU | Was ist passiert? Was war der Anlass / Ursache, was ist das Ziel / Absicht? |
+    | WO WANN WER |     |
+    | Wie | Wie hat sich das Geschehen zugetragen? |
+    | WARUM | Warum ist es passiert? |
+    | WAS | Was sind die Folgen dieses Ereignisses? |
+
+    #### Grösstmögliche Objektivität und Sachlichkeit ist anzustreben.
+    - Die Faken sind richtig.
+    - Meinungen sind als solche gekennzeichnet.
     `,
   },
   {
@@ -222,6 +238,134 @@ const topics = [
     body: `
     `,
   },
+  {
+    path: 'deutsch',
+    title: 'Begriffsdefinitionen',
+  },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Eristik',
+    body: `
+    #### Oberbegriff
+    - Rhetorisches Mittel
+
+    #### Unterscheidende Merkmale
+    - Mittel der Manipulation
+	  - ersetzen Argumente
+    
+    #### Details / Beispiele
+    - Polemik: Angriff auf die Person um sie – und damit auch ihre Argumente – zu disqualifizieren.
+    - Übertreibung, Pauschalierung:  Bsp: Alle Deutschen sind Raser.
+    - Aus einem meist harmlosen Einzelfall wird ein globales Problem gemacht.
+
+    #### Bedeutung
+	  - Eigenen Standpunkt durchsetzen, wenn man keine oder die schwächeren Argumente hat.
+	  - Strategie: Arbeit auf der Gefühlsebene und mit Assoziationen.
+    
+    #### Schluss
+	  - Unfair, unsachlich      
+    `
+  },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Werkzeuge der Argumentation',
+    body: `
+    - Analogiebeweis
+    - Faktenargument
+    - Logischer, deduktiver Schluss
+    - Argumentationsmodelle
+    - Autoritätsargument
+    - Aussagerichtigkeit
+    - Ausklammerung
+    - Einengung
+    - Einseitige Argumentation
+    - Expertenargument
+    - Falsifizierung
+    - 5-Satz Modelle
+    - Induktiver Schluss
+    - Manipulierende Argumentation
+    - Mehrseitige Argumentation
+    - Prämisse
+    - Selbstbegründende Behauptung
+    - Wertbezogene Argumente
+    - Verifizieren
+    - Zweiseitige Argumentation
+    - Modell Kette
+    `
+  },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Werkzeuge der Rhetorik',
+    body: `
+    - Ansprache
+    - Appell
+    - Dialektik
+    - Empfängerbezug
+    - Gestik 
+    - Jargon
+    - Mimik
+    - Non Verbale Zeichen
+    - Paraverbale Zeichen
+    - Propaganda
+    - Rede
+    - Rhetorik
+    - Rhetorische Frage
+    - Suggestivfrage
+    - Tabuisierung 
+    - Verbale Zeichen
+    - Verbalstil
+    `
+  },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Werkzeuge der Stilistik',
+    body: `
+    - Aktiv
+    - Anapher (Wiederholung)
+    - Angemessenheit
+    - Anglizismus
+    - Ellipse
+    - Euphemismus
+    - Hyperbel
+    - Metapher
+    - Explizite Aussage
+    - Implizite Aussage
+    - Klimax (Steigerung mit Höhepunkt)
+    - Manipulation
+    - Neologismus
+    - Pleonasmus
+    - Reframing
+    - Ironie
+    - Vergleich
+    - Sarkasmus
+    - Polemik
+    - Umbenennung
+    - Verdinglichung
+    - Visualisieren
+    - Zeitstil
+    `
+  },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Frames',
+    body: `
+    #### Oberbegriff
+    - Kommunikationswissenschaften / Medienkunde
+
+    #### Unterscheidende Merkmale
+    - Analysetool  von Sachtexten, v.a. informierenden Texten wie Berichte
+    
+    #### Details / Beispiele
+    - Problembeschreibung und Nennung der Akteure (bzw. Tabuisierung).
+    - Ursachen (meist basierend auf einfacher Kausalität).
+    - Handlungsverantwortung – wer hat die Kompetenz ein Problem zu lösen.
+    - Bewertung
+
+    #### Bedeutung
+	  - Textfunktion Analysieren / Verständnis.
+	  - Frame ist ein multidisziplinäres Konzept, mit welchem man die Bedeutung von schriftlichen und mündlichen Texten bzw. Aussagen erfassen kann.
+    `
+  },
 
   /****************************************
    * Physik
@@ -230,7 +374,6 @@ const topics = [
     path: '',
     title: 'Physik',
   },
-
 
   /****************************************
    * Mathe
