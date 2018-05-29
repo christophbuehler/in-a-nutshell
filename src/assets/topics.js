@@ -22,7 +22,7 @@ const topics = [
   {
     path: 'biologie',
     title: 'Zellen',
-    body: 'Inhalte folgen.',
+    body: '',
   },
   {
     path: 'biologie/zellen',
