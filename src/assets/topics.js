@@ -331,6 +331,27 @@ const topics = [
     - Zeitstil
     `
   },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Frames',
+    body: `
+    #### Oberbegriff
+    - Kommunikationswissenschaften / Medienkunde
+
+    #### Unterscheidende Merkmale
+    - Analysetool  von Sachtexten, v.a. informierenden Texten wie Berichte
+    
+    #### Details / Beispiele
+    - Problembeschreibung und Nennung der Akteure (bzw. Tabuisierung).
+    - Ursachen (meist basierend auf einfacher Kausalität).
+    - Handlungsverantwortung – wer hat die Kompetenz ein Problem zu lösen.
+    - Bewertung
+
+    #### Bedeutung
+	  - Textfunktion Analysieren / Verständnis.
+	  - Frame ist ein multidisziplinäres Konzept, mit welchem man die Bedeutung von schriftlichen und mündlichen Texten bzw. Aussagen erfassen kann.
+    `
+  },
 
   /****************************************
    * Physik
@@ -339,7 +360,6 @@ const topics = [
     path: '',
     title: 'Physik',
   },
-
 
   /****************************************
    * Mathe
