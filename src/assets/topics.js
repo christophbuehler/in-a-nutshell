@@ -210,11 +210,15 @@ const topics = [
     path: 'deutsch/schriftliche-textsorten',
     title: 'Leitfaden: Bericht',
     body: `
-    | Tables        | Are           | Cool  |
-    | ------------- |:-------------:| -----:|
-    | col 3 is      | right-aligned | $1600 |
-    | col 2 is      | centered      |   $12 |
-    | zebra stripes | are neat      |    $1 |
+    | ---------------- |:---------------------------------------------------------------------------:|
+    | HEADER           | Textsorte Daten: Anlass, Auftraggeber, Verfasser, Datum…                    |
+    | THEMA            | Titel (Medienberichte verwenden Schlagzeilen und Titel)                     |
+    | ABSRACT          | Zusammenfassung, Vorspann, Nachrichtenkopf, Lead                            |
+    | WAS WARUM / WOZU | Was ist passiert? Was war der Anlass / Ursache, was ist das Ziel / Absicht? |
+    | WO WANN WER      |                                                                             |
+    | WIE              | Wie hat sich das Geschehen zugetragen?                                      |
+    | WARUM            | Warum ist es passiert?                                                      |
+    | WAS              | Was sind die Folgen dieses Ereignisses?                                     |
 
 
     | HEADER | Textsorte Daten: Anlass, Auftraggeber, Verfasser, Datum… |
