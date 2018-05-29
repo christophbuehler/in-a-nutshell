@@ -210,6 +210,20 @@ const topics = [
     path: 'deutsch/schriftliche-textsorten',
     title: 'Leitfaden: Bericht',
     body: `
+    | HEADER | Textsorte
+    Daten: Anlass, Auftraggeber, Verfasser, Datum… |
+    | --- | --- |
+    | THEMA | Titel (Medienberichte verwenden Schlagzeilen und Titel) |
+    | ABSRACT | Zusammenfassung, Vorspann, Nachrichtenkopf, Lead |
+    | WAS WARUM / WOZU | Was ist passiert? Was war der Anlass / Ursache, was ist das Ziel / Absicht? |
+    | WO WANN WER |     |
+    | Wie | Wie hat sich das Geschehen zugetragen? |
+    | WARUM | Warum ist es passiert? |
+    | WAS | Was sind die Folgen dieses Ereignisses? |
+
+    #### Grösstmögliche Objektivität und Sachlichkeit ist anzustreben.
+    - Die Faken sind richtig.
+    - Meinungen sind als solche gekennzeichnet.
     `,
   },
   {
