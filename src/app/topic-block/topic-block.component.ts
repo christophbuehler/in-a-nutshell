@@ -13,16 +13,14 @@ declare const topics: Topic[];
   animations: [
     trigger('popState', [
       state('true', style({
-        position: 'absolute',
-        top: '0',
-        left: '0',
+        transform: 'translate(0, 0)',
         height: '100%',
       })),
       transition('false => true', [
         style({
           position: 'absolute',
         }),
-        animate('0.4s ease')
+        animate('.4s ease')
       ]),
     ])
   ],
@@ -42,7 +40,8 @@ export class TopicBlockComponent implements OnInit {
       return;
     }
     const contentEl = this.content.nativeElement;
-    contentEl.style.top = `${rootEl.offsetTop}px`;
+    // contentEl.style.top = `${rootEl.offsetTop}px`;
+    contentEl.style.transform = `translate(0, ${rootEl.offsetTop}px)`;
     rootEl.classList.toggle('view', true);
     this.popState = true;
   }

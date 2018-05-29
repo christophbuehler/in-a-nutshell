@@ -5,7 +5,7 @@
         <span class="completeness mat-elevation-z4"
             *ngIf="!topic.path">{{topic.complete || 0}}%</span>
     </div>
-    <div class="content-stretch">
+    <div class="content-stretch" *ngIf="popState">
         <markdown [data]="topic.body || 'Inhalt folgt.'" class="body"></markdown>
         <div *ngIf="topics">
             <app-topic-block
