@@ -1,0 +1,14 @@
+<div #content [@popState]="popState" class="content">
+    <div matRipple class="title" fxLayout="row" fxLayoutAlign="center center">
+        <mat-icon class="close-btn" (click)="close($event)">arrow_back</mat-icon>
+        <span fxFlex>{{topic.title}}</span>
+    </div>
+    <div class="content-stretch">
+        <markdown [data]="topic.body || 'Inhalt folgt.'" class="body"></markdown>
+        <div *ngIf="topic.children">
+            <app-topic-block
+                [topic]="topic"
+                *ngFor="let topic of topic.children"></app-topic-block>
+        </div>
+    </div>
+</div>
