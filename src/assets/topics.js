@@ -192,11 +192,13 @@ const topics = [
     - Zusammenfassung
     - Beschreibung von Grafiken
     - Begriffsdefinition als Lexikoneintrag
+
     #### Argumentative / Analytische Textart
     - Stellungnahme
     - Entgegnung
     - Problemarbeit / Positionspapier
     - Texterörterung / Textkritik
+
     #### Literarische / Analytische Textart
     - Inhaltsangabe
     - Entgegnung
@@ -222,6 +224,113 @@ const topics = [
     body: `
     `,
   },
+  {
+    path: 'deutsch',
+    title: 'Begriffsdefinitionen',
+  },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Eristik',
+    body: `
+    #### Oberbegriff
+    - Rhetorisches Mittel
+
+    #### Unterscheidende Merkmale
+    - Mittel der Manipulation
+	  - ersetzen Argumente
+    
+    #### Details / Beispiele
+    - Polemik: Angriff auf die Person um sie – und damit auch ihre Argumente – zu disqualifizieren.
+    - Übertreibung, Pauschalierung:  Bsp: Alle Deutschen sind Raser.
+    - Aus einem meist harmlosen Einzelfall wird ein globales Problem gemacht.
+
+    #### Bedeutung
+	  - Eigenen Standpunkt durchsetzen, wenn man keine oder die schwächeren Argumente hat.
+	  - Strategie: Arbeit auf der Gefühlsebene und mit Assoziationen.
+    
+    #### Schluss
+	  - Unfair, unsachlich      
+    `
+  },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Werkzeuge der Argumentation',
+    body: `
+    - Analogiebeweis
+    - Faktenargument
+    - Logischer, deduktiver Schluss
+    - Argumentationsmodelle
+    - Autoritätsargument
+    - Aussagerichtigkeit
+    - Ausklammerung
+    - Einengung
+    - Einseitige Argumentation
+    - Expertenargument
+    - Falsifizierung
+    - 5-Satz Modelle
+    - Induktiver Schluss
+    - Manipulierende Argumentation
+    - Mehrseitige Argumentation
+    - Prämisse
+    - Selbstbegründende Behauptung
+    - Wertbezogene Argumente
+    - Verifizieren
+    - Zweiseitige Argumentation
+    - Modell Kette
+    `
+  },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Werkzeuge der Rhetorik',
+    body: `
+    - Ansprache
+    - Appell
+    - Dialektik
+    - Empfängerbezug
+    - Gestik 
+    - Jargon
+    - Mimik
+    - Non Verbale Zeichen
+    - Paraverbale Zeichen
+    - Propaganda
+    - Rede
+    - Rhetorik
+    - Rhetorische Frage
+    - Suggestivfrage
+    - Tabuisierung 
+    - Verbale Zeichen
+    - Verbalstil
+    `
+  },
+  {
+    path: 'deutsch/begriffsdefinitionen',
+    title: 'Werkzeuge der Stilistik',
+    body: `
+    - Aktiv
+    - Anapher (Wiederholung)
+    - Angemessenheit
+    - Anglizismus
+    - Ellipse
+    - Euphemismus
+    - Hyperbel
+    - Metapher
+    - Explizite Aussage
+    - Implizite Aussage
+    - Klimax (Steigerung mit Höhepunkt)
+    - Manipulation
+    - Neologismus
+    - Pleonasmus
+    - Reframing
+    - Ironie
+    - Vergleich
+    - Sarkasmus
+    - Polemik
+    - Umbenennung
+    - Verdinglichung
+    - Visualisieren
+    - Zeitstil
+    `
+  }
 
   /****************************************
    * Physik
