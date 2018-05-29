@@ -7,11 +7,13 @@ import { MarkdownModule, MarkdownService, MarkdownComponent } from 'ngx-markdown
 
 import { AppComponent } from './app.component';
 import { TopicBlockComponent } from './topic-block/topic-block.component';
+import { ExamComponent } from './exam/exam.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopicBlockComponent,
+    ExamComponent,
   ],
   imports: [
     BrowserAnimationsModule,

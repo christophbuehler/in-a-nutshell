@@ -1,0 +1,171 @@
+:host {
+  display: block;
+  &.view {
+    >.content {
+      z-index: 1;
+      position: absolute;
+    }
+  }
+  .exam-btn {
+    background-color: #fff;
+    border: 2px solid #fb8222;
+    color: #fb8222;
+    line-height: 36px;
+  }
+  .content {
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    position: absolute;
+    >div {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      right: 8px;
+      .btn {
+        padding: 0 32px;
+        background: #fb8222;
+        color: #fff;
+        letter-spacing: 2px;
+        margin-bottom: 32px;
+      }
+      .top-score {
+        margin: 42px 0;
+        text-align: center;
+        b {
+          font-size: 48px;
+          color: #fb8222;
+          font-weight: bold;
+          line-height: 60px;
+          height: 60px;
+        }
+        span {
+          display: block;
+          line-height: 28px;
+          height: 28px;
+          color: #5f6368;
+          font-size: 14px;
+          &.status {
+            position: relative;
+            margin: 4px 0;
+            border: 1px solid rgba(0, 0, 0, .1);
+            border-radius: 8px;
+            padding: 0 16px;
+            display: inline-block;
+            background: #fafafa;
+          }
+        }
+      }
+      >.title {
+        left: 0;
+        top: 0;
+        background: #fff;
+        width: 100%;
+        font-size: 16px;
+        color: rgba(0, 0, 0, .9);
+        font-weight: 500;
+        padding: 0 16px;
+        height: 52px;
+        position: relative;
+        border-bottom: 1px solid rgba(0,0,0,.2);
+        span {
+          padding-left: 8px;
+          line-height: 52px;
+          height: 52px;
+        }
+        .close-btn {
+          display: block;
+          height: 23px;
+          padding: 14px 0;
+        }
+      }
+      .question-text {
+        padding: 16px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #5f6368;
+        overflow: hidden;
+        markdown {
+          display: block;
+          width: 100%;
+          font-weight: 400;
+          white-space: normal;
+          /deep/ strong {
+            // color: #2181ff;
+            // letter-spacing: 6px;
+            font-weight: 500;
+            // text-transform: uppercase;
+            // text-decoration: underline;
+            white-space: nowrap;
+          }
+          /deep/ img {
+            max-width: 100%;
+          }
+          /deep/ h4 {
+              border-bottom: 1px solid rgba(0,0,0,.1);
+              margin: 0;
+              padding-bottom: 4px;
+              font-size: 16px;
+          }
+        }
+      }
+      .letters {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 34px;
+        text-align: center;
+        background: rgba(255,255,255,.6);
+        >span {
+          display: inline-block;
+          position: relative;
+          border-radius: 4px 4px 0 0;
+          border-bottom: 2px solid rgba(0, 0, 0, .4);
+          height: 48px;
+          line-height: 48px;
+          box-sizing: border-box;
+          width: 36px;
+          text-align: center;
+          font-size: 16px;
+          color: #5f6368;
+          text-transform: uppercase;
+          background: #fff;
+          margin: 4px 12px;
+          cursor: pointer;
+          &:active {
+            border-bottom-width: 4px;
+          }
+        }
+      }
+      .time {
+        position: absolute;
+        bottom: 8px;
+        left: 16px;
+        color: #5f6368;
+        font-size: 12px;
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        background: #fff;
+      }
+      .points {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        color: #fff;
+        font-size: 18px;
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        border-radius: 50%;
+        background: #fb8222;
+      }
+    }
+  }
+}

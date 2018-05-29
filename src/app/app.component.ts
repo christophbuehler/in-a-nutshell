@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   topics: Topic[] = topics;
+  mainTopics: Topic[];
+
+  constructor() {
+    this.mainTopics = topics
+      .filter(topic => topic.path === '');
+  }
 }
