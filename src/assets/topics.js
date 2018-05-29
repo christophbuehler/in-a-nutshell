@@ -330,7 +330,7 @@ const topics = [
     - Visualisieren
     - Zeitstil
     `
-  }
+  },
 
   /****************************************
    * Physik
