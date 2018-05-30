@@ -34,8 +34,6 @@ export class ExamComponent implements OnInit {
   popState = false;
   question: GappedTextExamQuestion;
   running = false;
-  wordStatus: string;
-  letters: string[];
   points: number;
   timer: Observable<any>;
   highscore: number;
@@ -61,13 +59,15 @@ export class ExamComponent implements OnInit {
       ].find(v => v[0] >= this.highscore)[1];
   }
 
-  generateQuestion() {
-    const possibleTopics = topics
-      .filter(t => t.body && t.body.trim().length > 100 && t.body.indexOf('**') !== -1);
-    const topic = possibleTopics[parseInt((possibleTopics.length * Math.random()).toString(), 10)];
+
+  getWordsOfTopic(topic: Topic): (string | number)[][] {
     const words = topic.body.split(/([ ,.()*])/g).filter(w => w !== '');
-    const possibleWords = words
-      .map((w: string, i) => [w, i])
+    return words
+      .map((w: string, i) => [w, i]);
+  }
+
+  getBuzzWords(words: (string | number)[][]): (string | number)[][] {
+    return words
 
       // Word has to be marked with **Word**
       .filter(([w, i], ci, all) =>
@@ -77,92 +77,85 @@ export class ExamComponent implements OnInit {
         all[(<number>i) - 2][0] === '*' &&
         all[(<number>i) + 1][0] === '*' &&
         all[(<number>i) + 2][0] === '*');
+  }
 
-      // Only uppercase words.
-      // .filter(([w, i]) => w[0].toLowerCase() !== w[0] && (<string>w).length > 3)
+  getRandomTopic(minBodyLength: number, exclude: Topic = void 0): Topic {
+    const possibleTopics = topics
+      .filter(t => !exclude || t !== exclude)
+      .filter(t => t.body && t.body.trim().length > minBodyLength && t.body.indexOf('**') !== -1);
+    return possibleTopics[parseInt((possibleTopics.length * Math.random()).toString(), 10)];
+  }
 
-      // Word should not be in the title of the topic.
-      // .filter(([w, i]) => topic.title.toLocaleLowerCase().indexOf((<string>w).toLocaleLowerCase()) === -1);
-
-    const chosen = possibleWords[parseInt((Math.random() * possibleWords.length).toString(), 10)];
-    words[chosen[1]] = (<string>chosen[0]).replace(/./g, '-');
-    const textSnippetSize = 100;
-
-    const { solutionPos, text } = words.reduce((res, current, i) => {
-      if (i === chosen[1]) {
-        res.solutionPos = res.text.length - 1;
-      } else if (Math.abs(i - <number>chosen[1]) > textSnippetSize) {
-        return res;
+  getUniqueWords(words: (string | number)[][], count: number): (string | number)[][] {
+    const uniqueWords = [];
+    while (uniqueWords.length < count) {
+      const index = parseInt((Math.random() * words.length).toString(), 10);
+      const word = words[index];
+      if (!uniqueWords.find(w => w[0] === word[0])) {
+        uniqueWords.push(word);
       }
-      res.text += current;
+    }
+    return uniqueWords;
+  }
 
-      // Remove spaces at beginning of line.
-      res.text = res.text.replace(/^ +/gm, '');
-      return res;
-    }, { text: '', solutionPos: -1 });
+  generateQuestion() {
+    const topic = this.getRandomTopic(100);
+    const words = this.getWordsOfTopic(topic);
+    const buzzWords = this.getBuzzWords(words);
+    const chosen = this.getUniqueWords(buzzWords, 1)[0];
+    
+    words[chosen[1]] = ['XXXXXXXXX', chosen[1]];
+
+    const text = this.getTextSnippet(words, <number>chosen[1], 50);
+
+    const solution = <string>chosen[0];
+    const optionTopic = this.getRandomTopic(100, topic);
+    const optionWords = this.getBuzzWords(this.getWordsOfTopic(optionTopic));
+    const options = <string[]>this.getUniqueWords(optionWords, 3).map(w => w[0]);
+    options.push(solution);
 
     this.question = {
       text,
-      solutionPos,
       topic,
-      solution: <string>chosen[0],
+      options,
+      solutionPos: <number>chosen[1],
+      solution,
     };
   }
 
-  letterClick(letter: string) {
+  getTextSnippet(words: (string | number)[][], surroundingIndex: number, textSnippetSize: number): string {
+    return words.reduce((res, current, i) => {
+      if (Math.abs(i - surroundingIndex) > textSnippetSize) {
+        return res;
+      }
+
+      // Remove spaces at beginning of line.
+      return res = `${res}${current[0]}`.replace(/^ +/gm, '');
+    }, '');
+  }
+
+  optionClick(option: string) {
     const solution = this.question.solution;
-    const correctLetter = solution[this.wordStatus.length];
-    if (correctLetter.toLowerCase() !== letter.toLowerCase()) {
+    const solutionPos = this.question.solutionPos;
+    const words = this.getWordsOfTopic(this.question.topic);
+    const text = this.getTextSnippet(words, solutionPos, 50);
+
+    this.question = {
+      ...this.question,
+      text,
+    };
+
+    if (option.toLowerCase() !== option.toLowerCase()) {
       this.points -= 2;
     } else {
       this.points = this.points + 2 + parseInt((Math.max(this.points, 0) * .1).toString(), 10);
     }
 
-    this.wordStatus += correctLetter;
-    const txtParts = this.question.text.split('');
-    txtParts[this.question.solutionPos + this.wordStatus.length] = correctLetter;
-    this.question.text = txtParts.join('');
-
-    if (this.wordStatus.toLocaleLowerCase() === this.question.solution.toLocaleLowerCase()) {
-      this.nextWord();
-    } else {
-      this.setLetters();
-    }
-  }
-
-  setLetters(): void {
-    const letterCount = 3;
-
-    // Get random, non-repeating letters.
-    const letters = Array.from({ length: letterCount })
-      .reduce<string[]>((all, el, i) => [
-        ...all,
-        nonUsedLetter(all),
-      ], []);
-
-    // Ensure the correct letter is included.
-    const correctLetter = this.question.solution[this.wordStatus.length].toUpperCase();
-    if (letters.indexOf(correctLetter) === -1) {
-      letters[parseInt((Math.random() * letters.length).toString(), 10)] = correctLetter;
-    }
-
-    // Sort letters to get keyboard layout.
-    this.letters = letters
-      .sort((a, b) => allLetters.indexOf(a.toUpperCase()) - allLetters.indexOf(b.toUpperCase()));
-
-    function nonUsedLetter(allInUse) {
-      const letter = allLetters[parseInt((Math.random() * allLetters.length).toString(), 10)];
-      if (allInUse.indexOf(letter) !== -1) {
-        return nonUsedLetter(allInUse);
-      }
-      return letter;
-    }
+    setTimeout(() => this.nextWord(), 1000);
   }
 
   nextWord() {
-    this.wordStatus = '';
     this.generateQuestion();
-    this.setLetters();
   }
 
   start() {
@@ -212,5 +205,6 @@ export interface GappedTextExamQuestion {
   text: string;
   solution: string;
   solutionPos: number;
+  options: string[];
   topic: Topic;
 }

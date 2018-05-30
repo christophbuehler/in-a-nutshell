@@ -21,10 +21,9 @@
         <h2>{{question.topic.title}}</h2>
         <markdown [data]="question.text"></markdown>
       </div>
-      <div class="letters">
-        <ng-container *ngFor="let letter of letters; let i = index">
-          <div *ngIf="i === 4 || i === 8"></div>
-          <span (click)="letterClick(letter)" class="mat-elevation-z2" matRipple>{{letter}}</span>
+      <div class="options">
+        <ng-container *ngFor="let option of question.options; let i = index">
+          <span (click)="optionClick(option)" class="mat-elevation-z2" matRipple>{{option}}</span>
         </ng-container>
       </div>
       <div class="time">{{timer | async}}s left</div>
