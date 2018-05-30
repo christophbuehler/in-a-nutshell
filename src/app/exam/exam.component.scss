@@ -69,7 +69,6 @@
         padding: 0 16px;
         height: 52px;
         position: relative;
-        border-bottom: 1px solid rgba(0,0,0,.2);
         span {
           padding-left: 8px;
           line-height: 52px;
@@ -79,6 +78,35 @@
           display: block;
           height: 23px;
           padding: 14px 0;
+        }
+      }
+      .question-indicators {
+        white-space: nowrap;
+        >div {
+          height: 6px;
+          margin: 0 6px;
+          border-radius: 4px;
+          overflow: hidden;
+          position: relative;
+          background: #eee;
+          &:before {
+            content: '';
+            display: block;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: transparent;
+            transition: all .2s ease;
+          }
+          &.correct:before {
+            width: 100%;
+            background: #4283f2;
+          }
+          &.incorrect:before {
+            width: 100%;
+            background: #ff2444;
+          }
         }
       }
       .question-text {
@@ -92,12 +120,19 @@
           width: 100%;
           font-weight: 400;
           white-space: normal;
+          /deep/ .answer-not-solved {
+            display: inline-block;
+            color: transparent;
+            width: 60px;
+            background: #eee;
+            border-radius: 4px;
+          }
+          /deep/ .answer-solved {
+            display: inline-block;
+            color: #4283f2;
+          }
           /deep/ strong {
-            // color: #2181ff;
-            // letter-spacing: 6px;
             font-weight: 500;
-            // text-transform: uppercase;
-            // text-decoration: underline;
             white-space: nowrap;
           }
           /deep/ img {
@@ -128,7 +163,7 @@
           height: 48px;
           line-height: 48px;
           box-sizing: border-box;
-          width: 120px;
+          width: 148px;
           text-align: center;
           font-size: 12px;
           color: #5f6368;
@@ -138,19 +173,11 @@
           &:active {
             border-bottom-width: 4px;
           }
+          &.correct {
+            background: #4283f2;
+            color: #fff;
+          }
         }
-      }
-      .time {
-        position: absolute;
-        bottom: 8px;
-        left: 16px;
-        color: #5f6368;
-        font-size: 12px;
-        width: 42px;
-        height: 42px;
-        line-height: 42px;
-        text-align: center;
-        background: #fff;
       }
       .points {
         position: absolute;
@@ -163,7 +190,7 @@
         line-height: 42px;
         text-align: center;
         border-radius: 50%;
-        background: #fb8222;
+        background: #4283f2;
       }
     }
   }

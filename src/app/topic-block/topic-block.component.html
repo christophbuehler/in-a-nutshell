@@ -1,8 +1,8 @@
 <div #content [@popState]="popState" class="content">
     <div (click)="toggle()" matRipple class="title" fxLayout="row" fxLayoutAlign="center center">
         <span fxFlex>{{topic.title}}</span>
-        <span class="completeness"
-            *ngIf="!topic.path">{{topic.complete || 0}}%</span>
+        <span class="topic-count"
+            *ngIf="!topic.path">{{topicCount || 0}}</span>
         <mat-icon class="toggle-btn">arrow_upward</mat-icon>
         <div class="path" *ngIf="topic.path">› {{topic.path}}</div>
     </div>
