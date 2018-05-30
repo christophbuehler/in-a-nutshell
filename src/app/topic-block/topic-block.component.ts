@@ -40,7 +40,6 @@ export class TopicBlockComponent implements OnInit {
       return;
     }
     const contentEl = this.content.nativeElement;
-    // contentEl.style.top = `${rootEl.offsetTop}px`;
     contentEl.style.transform = `translate(0, ${rootEl.offsetTop}px)`;
     rootEl.classList.toggle('view', true);
     this.popState = true;

@@ -139,7 +139,6 @@ const topics = [
     title: 'Chemie',
   },
 
-
   /****************************************
    * Umwelt
   ****************************************/
@@ -373,6 +372,118 @@ const topics = [
   {
     path: '',
     title: 'Physik',
+    complete: 40,
+  },
+  {
+    path: 'physik',
+    title: 'Statik',
+    body: `
+    #### Erstes Newtonsche Gesetz
+    Verharrt ein Körper in Ruhe, so entspricht die Summe aller auf ihn wirkenden Kraftvektoren dem Nullvektor.
+
+    #### Drehmoment
+    BILD
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Kinematik',
+    body: `
+    #### Gleichmässige Bewegung
+
+    #### Gleichmässig beschleunigte Bewegung
+
+    #### Freier Fall
+
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Dynamik',
+    body: `
+    #### Zweites Newtonsches Gesetz
+
+    #### Gleit- und Haftreibung
+
+    #### Gravitation
+
+    #### Arbeit
+
+    #### Leistung
+
+    #### Potentielle Energie
+
+    #### Kinetische Energie
+
+    #### Energieerhaltung
+
+    #### Spannungsenergie einer Hookschen Feder
+
+    #### Gravitationspotential
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Elektrostatik',
+    body: `
+    #### Coulombsches Gesetz & Superpositionsprinzip
+
+    #### Elektrisches Feld & Superpositionsprinzip
+
+    #### Kraftwirkung des elektrischen Feldes auf ruhende und bewegte Ladungen
+
+    #### Spannung im homogenen elektrischen Feld
+
+    #### Arbeit des elektrischen Feldes
+
+    #### Potential im elektrischen Feld einer Punktladung
+
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Elektrodynamik',
+    body: `
+    #### Elektrischer Strom
+    U = R * I
+    
+    #### Parallel- und Serieschaltung Ohmscher Widerstände
+
+    #### Netzwerke: Kirchhoffsche Gesetze
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Magnetismus',
+    body: `
+    #### Gesetz von Bio-Savart
+
+    #### Elektrisches Feld eines geradlinigen Leiters
+
+    #### Amperesches Durchflutungsgesetz
+
+    #### Kraftwirkung des Magnetfeldes auf geladene Teilchen
+
+    #### Kraftwirkung des Magnetfeldes auf stromdurchflossene Leiter
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Optik',
+  },
+  {
+    path: 'physik',
+    title: 'Mechanik 2',
+  },
+  {
+    path: 'physik',
+    title: 'Einheiten',
+    body: `
+    - Tesla
+    - Hertz
+    - Joule
+    - ...
+    `
   },
 
   /****************************************
