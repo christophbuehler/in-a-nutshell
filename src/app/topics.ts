@@ -15,7 +15,6 @@ export function subTopics(topic: Topic) {
 export interface Topic {
     title: string;
     path: string;
-    abstract?: string;
     body?: string;
     complete?: number;
 }
