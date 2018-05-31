@@ -4,12 +4,15 @@ const topics = [
   ****************************************/
   {
     path: '',
+    title: 'Life Science',
+  },
+  {
+    path: 'life-science',
     title: 'Biologie',
-    complete: 50,
     body: 'Biologie ist die Wissenschaft von den Lebewesen.',
   },
   {
-    path: 'biologie',
+    path: 'life-science/biologie',
     title: 'Eigenschaften von Lebewesen',
     body: `
       - Lebewesen können Informationen (**Reize**) aus ihrer Umwelt aufnehmen und auf diese reagieren (**Reizbarkeit**).
@@ -20,12 +23,12 @@ const topics = [
       `,
   },
   {
-    path: 'biologie',
+    path: 'life-science/biologie',
     title: 'Zellen',
     body: '',
   },
   {
-    path: 'biologie/zellen',
+    path: 'life-science/biologie/zellen',
     title: 'Protocyte',
     body: `
       - Zelle ohne **Zellkern** aber mit einer **Kernregion**.
@@ -35,7 +38,7 @@ const topics = [
       `,
   },
   {
-    path: 'biologie/zellen',
+    path: 'life-science/biologie/zellen',
     title: 'Pflanzenzelle',
     body: `
       - Zelle mit **Zellkern** (**Eucyte**).
@@ -47,7 +50,7 @@ const topics = [
       `,
   },
   {
-    path: 'biologie/zellen',
+    path: 'life-science/biologie/zellen',
     title: 'Tierische Zelle',
     body: `
       - Zelle mit **Zellkern** (**Eucyte**).
@@ -59,7 +62,7 @@ const topics = [
       `,
   },
   {
-    path: 'biologie/zellen',
+    path: 'life-science/biologie/zellen',
     title: 'Bausteine einer Zelle',
     body: `
       #### **Zellwand**
@@ -130,6 +133,22 @@ const topics = [
       ![mitochondrien.png](assets/mitochondrien.png)
       `,
   },
+  {
+    path: 'life-science/biologie/zellen',
+    title: 'Stofftransport',
+    body: `
+    #### Zwei Wege
+    - Direkt durch die **Membran** ins **Plasma** und umgekehrt.
+    - Mithilfe von **Cytoplasma** in einer **Vakuole**.
+    
+    #### Energieaufwand beim Stofftransport
+    - **Passiver** Transport → braucht keine Energie → folgt dem Konzentrationsgefälle.
+    - **Aktiver** Transport → Energieaufwand nötig → gegen Konzentrationsgefälle.
+    
+    #### **Endocytose** und **Exocytose**
+    ![endocytose.png](assets/endocytose.png)
+    `,
+  },
 
   /****************************************
    * Chemie
@@ -138,7 +157,6 @@ const topics = [
     path: '',
     title: 'Chemie',
   },
-
 
   /****************************************
    * Umwelt
@@ -154,7 +172,6 @@ const topics = [
   {
     path: '',
     title: 'Deutsch',
-    complete: 40,
   },
   {
     path: 'deutsch',
@@ -373,6 +390,123 @@ const topics = [
   {
     path: '',
     title: 'Physik',
+  },
+  {
+    path: 'physik',
+    title: 'Statik',
+    body: `
+    #### Erstes Newtonsche Gesetz
+    Verharrt ein Körper in Ruhe, so entspricht die Summe aller auf ihn wirkenden Kraftvektoren dem Nullvektor.
+
+    #### Drehmoment
+    BILD
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Kinematik',
+    body: `
+    #### Gleichmässige Bewegung
+
+    #### Gleichmässig beschleunigte Bewegung
+
+    #### Freier Fall
+
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Dynamik',
+    body: `
+    #### Zweites Newtonsches Gesetz
+
+    #### Gleit- und Haftreibung
+
+    #### Gravitation
+
+    #### Arbeit
+
+    #### Leistung
+
+    #### Potentielle Energie
+
+    #### Kinetische Energie
+
+    #### Energieerhaltung
+
+    #### Spannungsenergie einer Hookschen Feder
+
+    #### Gravitationspotential
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Elektrostatik',
+    body: `
+    #### Coulombsches Gesetz & Superpositionsprinzip
+
+    #### Elektrisches Feld & Superpositionsprinzip
+
+    #### Kraftwirkung des elektrischen Feldes auf ruhende und bewegte Ladungen
+
+    #### Spannung im homogenen elektrischen Feld
+
+    #### Arbeit des elektrischen Feldes
+
+    #### Potential im elektrischen Feld einer Punktladung
+
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Elektrodynamik',
+    body: `
+    #### Elektrischer Strom
+    U = R * I
+    
+    #### Parallel- und Serieschaltung Ohmscher Widerstände
+
+    #### Netzwerke: Kirchhoffsche Gesetze
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Magnetismus',
+    body: `
+    #### Gesetz von Bio-Savart
+
+    #### Elektrisches Feld eines geradlinigen Leiters
+
+    #### Amperesches Durchflutungsgesetz
+
+    #### Kraftwirkung des Magnetfeldes auf geladene Teilchen
+
+    #### Kraftwirkung des Magnetfeldes auf stromdurchflossene Leiter
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Optik',
+    body: `
+    #### Optische Abbildungen, Lupe, Mikroskop, Teleskop
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Mechanik 2',
+    body: `
+    Anwendungen der Differential- und Integralrechnung der Kinematik
+    `
+  },
+  {
+    path: 'physik',
+    title: 'Einheiten',
+    body: `
+    - Tesla
+    - Hertz
+    - Joule
+    - ...
+    `
   },
 
   /****************************************

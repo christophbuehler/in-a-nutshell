@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostBinding, HostListener, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { MarkdownService } from 'ngx-markdown';
 
-import { Topic, subTopics} from '../topics';
+import { Topic, subTopics, childTopicCount } from '../topics';
 import { ElementRef } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -31,6 +31,7 @@ export class TopicBlockComponent implements OnInit {
   @ViewChild('content', { read: ElementRef }) content;
   popState = false;
   topics: Topic[];
+  topicCount: number;
 
   toggle() {
     const rootEl = this.elRef.nativeElement;
@@ -40,7 +41,6 @@ export class TopicBlockComponent implements OnInit {
       return;
     }
     const contentEl = this.content.nativeElement;
-    // contentEl.style.top = `${rootEl.offsetTop}px`;
     contentEl.style.transform = `translate(0, ${rootEl.offsetTop}px)`;
     rootEl.classList.toggle('view', true);
     this.popState = true;
@@ -52,5 +52,6 @@ export class TopicBlockComponent implements OnInit {
 
   ngOnInit() {
     this.topics = subTopics(this.topic);
+    this.topicCount = childTopicCount(this.topic);
   }
 }

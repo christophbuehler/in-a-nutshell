@@ -3,6 +3,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Topic } from '../topics';
 import { timer, Observable } from 'rxjs';
 import { map, tap, timeInterval, take, share, startWith } from 'rxjs/operators';
+import { query } from '@angular/animations';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Inject } from '@angular/core';
+import { stagger } from '@angular/animations';
 
 declare const topics: Topic[];
 const allLetters = 'QWERTZUIOPÜASDFGHJKLÖÄYXCVBNM-';
@@ -12,6 +16,32 @@ const allLetters = 'QWERTZUIOPÜASDFGHJKLÖÄYXCVBNM-';
   templateUrl: './exam.component.html',
   styleUrls: ['./exam.component.scss'],
   animations: [
+    trigger('listStagger', [
+      transition('* => *', [
+        query(':enter', [
+          style({
+            transform: 'translate3d(0,32px,0)',
+            opacity: 0,
+          }),
+          stagger('50ms', [
+            animate('0.2s ease-in', style({
+              transform: 'translate3d(0,0,0)',
+              opacity: 1,
+            })),
+          ]),
+        ], { optional: true }),
+        query(':leave', [
+          style({
+            transform: 'translate3d(0,0,0)',
+            opacity: 1,
+          }),
+          animate('0.2s ease-in', style({
+            transform: 'translate3d(0,-32px,0)',
+            opacity: 0,
+          }))
+        ], { optional: true }),
+      ]),
+    ]),
     trigger('popState', [
       state('true', style({
         position: 'absolute',
@@ -34,15 +64,18 @@ export class ExamComponent implements OnInit {
   popState = false;
   question: GappedTextExamQuestion;
   running = false;
-  wordStatus: string;
-  letters: string[];
   points: number;
-  timer: Observable<any>;
   highscore: number;
   status: string;
+  showCorrect = false;
+  questionCount: boolean[];
+  currentQuestionNum: number;
+
+  private questionCountNum = 8;
 
   constructor(
     private elRef: ElementRef,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -52,22 +85,24 @@ export class ExamComponent implements OnInit {
   loadScore() {
     this.highscore = parseInt(localStorage.getItem('highscore'), 10) || 0;
     this.status = <string>[
-        [0, 'Freshman'],
-        [600, 'A long Way to go'],
-        [800, 'Klugscheisser'],
-        [1200, 'Genie'],
-        [2000, 'Savant'],
-        [40000, 'Hacker'],
-      ].find(v => v[0] >= this.highscore)[1];
+      [0, 'Freshman'],
+      [4, 'Ziemlich Dumm'],
+      [6, 'A long Way to go'],
+      [7, 'Average Joe'],
+      [8, 'Klugscheisser'],
+      [10, 'Genie'],
+      [100000000, 'Hacker'],
+    ].find(v => v[0] >= this.highscore)[1];
   }
 
-  generateQuestion() {
-    const possibleTopics = topics
-      .filter(t => t.body && t.body.trim().length > 100 && t.body.indexOf('**') !== -1);
-    const topic = possibleTopics[parseInt((possibleTopics.length * Math.random()).toString(), 10)];
+  getWordsOfTopic(topic: Topic): (string | number)[][] {
     const words = topic.body.split(/([ ,.()*])/g).filter(w => w !== '');
-    const possibleWords = words
-      .map((w: string, i) => [w, i])
+    return words
+      .map((w: string, i) => [w, i]);
+  }
+
+  getBuzzWords(words: (string | number)[][]): (string | number)[][] {
+    return words
 
       // Word has to be marked with **Word**
       .filter(([w, i], ci, all) =>
@@ -77,115 +112,124 @@ export class ExamComponent implements OnInit {
         all[(<number>i) - 2][0] === '*' &&
         all[(<number>i) + 1][0] === '*' &&
         all[(<number>i) + 2][0] === '*');
+  }
 
-      // Only uppercase words.
-      // .filter(([w, i]) => w[0].toLowerCase() !== w[0] && (<string>w).length > 3)
+  getRandomTopic(minBodyLength: number, exclude: Topic = void 0): Topic {
+    const possibleTopics = topics
+      .filter(t => !exclude || t !== exclude)
+      .filter(t => t.body && t.body.trim().length > minBodyLength && t.body.indexOf('**') !== -1);
+    return possibleTopics[parseInt((possibleTopics.length * Math.random()).toString(), 10)];
+  }
 
-      // Word should not be in the title of the topic.
-      // .filter(([w, i]) => topic.title.toLocaleLowerCase().indexOf((<string>w).toLocaleLowerCase()) === -1);
-
-    const chosen = possibleWords[parseInt((Math.random() * possibleWords.length).toString(), 10)];
-    words[chosen[1]] = (<string>chosen[0]).replace(/./g, '-');
-    const textSnippetSize = 100;
-
-    const { solutionPos, text } = words.reduce((res, current, i) => {
-      if (i === chosen[1]) {
-        res.solutionPos = res.text.length - 1;
-      } else if (Math.abs(i - <number>chosen[1]) > textSnippetSize) {
-        return res;
+  getUniqueWords(words: (string | number)[][], count: number, exceptions = []): (string | number)[][] {
+    const uniqueWords = [];
+    while (uniqueWords.length < count) {
+      const index = parseInt((Math.random() * words.length).toString(), 10);
+      const word = words[index];
+      if (!uniqueWords.find(w => w[0] === word[0]) && exceptions.indexOf(word[0]) === -1) {
+        uniqueWords.push(word);
       }
-      res.text += current;
+    }
+    return uniqueWords;
+  }
 
-      // Remove spaces at beginning of line.
-      res.text = res.text.replace(/^ +/gm, '');
-      return res;
-    }, { text: '', solutionPos: -1 });
+  generateQuestion() {
+    const topic = this.getRandomTopic(100);
+    const words = this.getWordsOfTopic(topic);
+    const buzzWords = this.getBuzzWords(words);
+    const chosen = this.getUniqueWords(buzzWords, 1)[0];
+
+    words[chosen[1]] = ['<span class="answer-not-solved">xxx</span>', chosen[1]];
+
+    const text = this.getTextSnippet(words, <number>chosen[1], 50);
+    const solution = <string>chosen[0];
+    const optionTopic = this.getRandomTopic(100, topic);
+    const optionWords = this.getBuzzWords(this.getWordsOfTopic(optionTopic));
+    const options = <string[]>this.getUniqueWords(optionWords, 3, [solution]).map(w => w[0]);
+
+    options.splice(parseInt((Math.random() * (options.length + 1)).toString(), 10), 0, solution);
 
     this.question = {
       text,
-      solutionPos,
       topic,
-      solution: <string>chosen[0],
+      options,
+      solutionPos: <number>chosen[1],
+      solution,
     };
   }
 
-  letterClick(letter: string) {
-    const solution = this.question.solution;
-    const correctLetter = solution[this.wordStatus.length];
-    if (correctLetter.toLowerCase() !== letter.toLowerCase()) {
-      this.points -= 2;
-    } else {
-      this.points = this.points + 2 + parseInt((Math.max(this.points, 0) * .1).toString(), 10);
-    }
+  getTextSnippet(words: (string | number)[][], surroundingIndex: number, textSnippetSize: number): string {
+    return words.reduce((res, current, i) => {
+      if (Math.abs(i - surroundingIndex) > textSnippetSize) {
+        return res;
+      }
 
-    this.wordStatus += correctLetter;
-    const txtParts = this.question.text.split('');
-    txtParts[this.question.solutionPos + this.wordStatus.length] = correctLetter;
-    this.question.text = txtParts.join('');
-
-    if (this.wordStatus.toLocaleLowerCase() === this.question.solution.toLocaleLowerCase()) {
-      this.nextWord();
-    } else {
-      this.setLetters();
-    }
+      // Remove spaces at beginning of line.
+      return res = `${res}${current[0]}`.replace(/^ +/gm, '');
+    }, '');
   }
 
-  setLetters(): void {
-    const letterCount = 3;
-
-    // Get random, non-repeating letters.
-    const letters = Array.from({ length: letterCount })
-      .reduce<string[]>((all, el, i) => [
-        ...all,
-        nonUsedLetter(all),
-      ], []);
-
-    // Ensure the correct letter is included.
-    const correctLetter = this.question.solution[this.wordStatus.length].toUpperCase();
-    if (letters.indexOf(correctLetter) === -1) {
-      letters[parseInt((Math.random() * letters.length).toString(), 10)] = correctLetter;
+  optionClick(option: string) {
+    if (this.showCorrect) {
+      return;
     }
 
-    // Sort letters to get keyboard layout.
-    this.letters = letters
-      .sort((a, b) => allLetters.indexOf(a.toUpperCase()) - allLetters.indexOf(b.toUpperCase()));
+    const solution = this.question.solution;
+    const solutionPos = this.question.solutionPos;
+    const words = this.getWordsOfTopic(this.question.topic);
+    words[solutionPos][0] = `<span class="answer-solved">${solution}</span>`;
+    const text = this.getTextSnippet(words, solutionPos, 50);
 
-    function nonUsedLetter(allInUse) {
-      const letter = allLetters[parseInt((Math.random() * allLetters.length).toString(), 10)];
-      if (allInUse.indexOf(letter) !== -1) {
-        return nonUsedLetter(allInUse);
-      }
-      return letter;
+    this.question = {
+      ...this.question,
+      text,
+    };
+    this.showCorrect = true;
+
+    if (option.toLowerCase() !== solution.toLowerCase()) {
+      this.questionCount[this.currentQuestionNum] = false;
+    } else {
+      this.questionCount[this.currentQuestionNum] = true;
+      this.points += 1;
+    }
+
+    if (this.currentQuestionNum === this.questionCountNum - 1) {
+      this.running = false;
+      // if (this.points > this.highscore) {
+        localStorage.setItem('highscore', this.points.toString());
+        this.loadScore();
+        this.dialog.open(ScoreDialogComponent, {
+          width: '250px',
+          data: {
+            points: this.points,
+            status: this.status,
+          }
+        });
+        // alert('New highscore! You have earned the title of: ' + this.status);
+      // } else {
+        // alert('Your score: ' + this.points);
+      // }
+      this.points = 0;
+    } else {
+      setTimeout(() => this.question = {
+        ...this.question,
+        options: [],
+      }, 1200);
+      setTimeout(() => this.nextWord(), 1800);
     }
   }
 
   nextWord() {
-    this.wordStatus = '';
+    this.currentQuestionNum++;
+    this.showCorrect = false;
     this.generateQuestion();
-    this.setLetters();
   }
 
   start() {
     const duration = 60;
     this.points = 0;
-    this.timer = timer(1000, 1000).pipe(
-      take(duration),
-      map(i => duration - i - 1),
-      share(),
-    );
-    this.timer
-      .subscribe(null, null, () => {
-        this.running = false;
-        if (this.points > this.highscore) {
-          localStorage.setItem('highscore', this.points.toString());
-          this.loadScore();
-          alert('New highscore! You have earned the title of: ' + this.status);
-        } else {
-          alert('Your score: ' + this.points);
-        }
-
-        this.points = 0;
-      });
+    this.questionCount = Array(this.questionCountNum).fill(void 0);
+    this.currentQuestionNum = -1;
     this.nextWord();
     this.running = true;
   }
@@ -205,12 +249,29 @@ export class ExamComponent implements OnInit {
     rootEl.classList.toggle('view', true);
     this.popState = true;
   }
-
 }
 
 export interface GappedTextExamQuestion {
   text: string;
   solution: string;
   solutionPos: number;
+  options: string[];
   topic: Topic;
+}
+
+@Component({
+  selector: 'app-score-dialog',
+  template: `
+    <h2>Your Score: {{data.points}}</h2>
+    {{data.status}}
+  `,
+})
+export class ScoreDialogComponent {
+  constructor(
+    public dialogRef: MatDialogRef<ScoreDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

@@ -7,6 +7,12 @@
         <mat-icon *ngIf="!running" class="close-btn">arrow_downward</mat-icon>
         <span fxFlex>Test</span>
     </div>
+    <div *ngIf="running" fxLayout="row" class="question-indicators">
+      <div fxFlex
+        [class.incorrect]="i === false"
+        [class.correct]="i === true"
+        *ngFor="let i of questionCount"></div>
+    </div>
     <ng-container *ngIf="!running">
       <span fxFlex></span>
       <div class="top-score">
@@ -21,13 +27,15 @@
         <h2>{{question.topic.title}}</h2>
         <markdown [data]="question.text"></markdown>
       </div>
-      <div class="letters">
-        <ng-container *ngFor="let letter of letters; let i = index">
-          <div *ngIf="i === 4 || i === 8"></div>
-          <span (click)="letterClick(letter)" class="mat-elevation-z2" matRipple>{{letter}}</span>
+      <div class="options"
+        [@listStagger]="question.options.length">
+        <ng-container
+          *ngFor="let option of question.options">
+          <span
+            [class.correct]="showCorrect && option === question.solution"
+            (click)="optionClick(option)" class="mat-elevation-z2" matRipple>{{option}}</span>
         </ng-container>
       </div>
-      <div class="time">{{timer | async}}s left</div>
       <div class="points mat-elevation-z4">{{points}}</div>
     </ng-container>
     <div fxLayout="row" fxLayoutAlign="center center">
