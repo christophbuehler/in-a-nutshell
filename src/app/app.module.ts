@@ -8,6 +8,8 @@ import { MarkdownModule, MarkdownService, MarkdownComponent } from 'ngx-markdown
 import { AppComponent } from './app.component';
 import { TopicBlockComponent } from './topic-block/topic-block.component';
 import { ExamComponent, ScoreDialogComponent } from './exam/exam.component';
+import { TopicService } from './topic.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,10 +27,11 @@ import { ExamComponent, ScoreDialogComponent } from './exam/exam.component';
     FlexLayoutModule,
     MatRippleModule,
     MatButtonModule,
+    HttpClientModule,
     MarkdownModule.forRoot({}),
   ],
   entryComponents: [ScoreDialogComponent],
-  providers: [],
+  providers: [TopicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

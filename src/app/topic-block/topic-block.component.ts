@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, HostBinding, HostListener, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { MarkdownService } from 'ngx-markdown';
 
-import { Topic, subTopics, childTopicCount } from '../topics';
 import { ElementRef } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { TopicService, Topic } from '../topic.service';
 
 declare const topics: Topic[];
 
@@ -48,10 +48,11 @@ export class TopicBlockComponent implements OnInit {
 
   constructor(
     private elRef: ElementRef,
+    private topicService: TopicService,
   ) { }
 
   ngOnInit() {
-    this.topics = subTopics(this.topic);
-    this.topicCount = childTopicCount(this.topic);
+    this.topics = this.topicService.subTopics(this.topic);
+    this.topicCount = this.topicService.childTopicCount(this.topic);
   }
 }

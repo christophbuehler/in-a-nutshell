@@ -1,14 +1,13 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Topic } from '../topics';
 import { timer, Observable } from 'rxjs';
 import { map, tap, timeInterval, take, share, startWith } from 'rxjs/operators';
 import { query } from '@angular/animations';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Inject } from '@angular/core';
 import { stagger } from '@angular/animations';
+import { Topic, TopicService } from '../topic.service';
 
-declare const topics: Topic[];
 const allLetters = 'QWERTZUIOPÜASDFGHJKLÖÄYXCVBNM-';
 
 @Component({
@@ -76,6 +75,7 @@ export class ExamComponent implements OnInit {
   constructor(
     private elRef: ElementRef,
     private dialog: MatDialog,
+    private topicService: TopicService,
   ) { }
 
   ngOnInit() {
@@ -114,7 +114,7 @@ export class ExamComponent implements OnInit {
         all[(<number>i) + 2][0] === '*');
   }
 
-  getRandomTopic(minBodyLength: number, exclude: Topic = void 0): Topic {
+  getRandomTopic(topics: Topic[], minBodyLength: number, exclude: Topic = void 0): Topic {
     const possibleTopics = topics
       .filter(t => !exclude || t !== exclude)
       .filter(t => t.body && t.body.trim().length > minBodyLength && t.body.indexOf('**') !== -1);
@@ -134,28 +134,33 @@ export class ExamComponent implements OnInit {
   }
 
   generateQuestion() {
-    const topic = this.getRandomTopic(100);
-    const words = this.getWordsOfTopic(topic);
-    const buzzWords = this.getBuzzWords(words);
-    const chosen = this.getUniqueWords(buzzWords, 1)[0];
+    this.topicService.topics.pipe(
+      take(1),
+      tap(topics => {
+        const topic = this.getRandomTopic(topics, 100);
+        const words = this.getWordsOfTopic(topic);
+        const buzzWords = this.getBuzzWords(words);
+        const chosen = this.getUniqueWords(buzzWords, 1)[0];
 
-    words[chosen[1]] = ['<span class="answer-not-solved">xxx</span>', chosen[1]];
+        words[chosen[1]] = ['<span class="answer-not-solved">xxx</span>', chosen[1]];
 
-    const text = this.getTextSnippet(words, <number>chosen[1], 50);
-    const solution = <string>chosen[0];
-    const optionTopic = this.getRandomTopic(100, topic);
-    const optionWords = this.getBuzzWords(this.getWordsOfTopic(optionTopic));
-    const options = <string[]>this.getUniqueWords(optionWords, 3, [solution]).map(w => w[0]);
+        const text = this.getTextSnippet(words, <number>chosen[1], 50);
+        const solution = <string>chosen[0];
+        const optionTopic = this.getRandomTopic(topics, 100, topic);
+        const optionWords = this.getBuzzWords(this.getWordsOfTopic(optionTopic));
+        const options = <string[]>this.getUniqueWords(optionWords, 3, [solution]).map(w => w[0]);
 
-    options.splice(parseInt((Math.random() * (options.length + 1)).toString(), 10), 0, solution);
+        options.splice(parseInt((Math.random() * (options.length + 1)).toString(), 10), 0, solution);
 
-    this.question = {
-      text,
-      topic,
-      options,
-      solutionPos: <number>chosen[1],
-      solution,
-    };
+        this.question = {
+          text,
+          topic,
+          options,
+          solutionPos: <number>chosen[1],
+          solution,
+        };
+      }),
+    ).subscribe();
   }
 
   getTextSnippet(words: (string | number)[][], surroundingIndex: number, textSnippetSize: number): string {

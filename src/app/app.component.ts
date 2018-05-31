@@ -1,7 +1,7 @@
-import { Topic } from './topics';
 import { Component } from '@angular/core';
-
-declare const topics: Topic[];
+import { TopicService, Topic } from './topic.service';
+import { filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,13 @@ declare const topics: Topic[];
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  topics: Topic[] = topics;
-  mainTopics: Topic[];
+  mainTopics: Observable<Topic[]>;
 
-  constructor() {
-    this.mainTopics = topics
-      .filter(topic => topic.path === '');
+  constructor(
+    topicService: TopicService,
+  ) {
+    this.mainTopics = topicService.topics.pipe(
+      map(topics => topics.filter(t => t.path === '')),
+    );
   }
 }

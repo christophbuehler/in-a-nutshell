@@ -1,5 +1,6 @@
 :host {
   display: block;
+  margin-bottom: 16px;
   &.view {
     >.content {
       z-index: 1;
@@ -7,8 +8,11 @@
     }
   }
   .exam-btn {
-    color: #000;
+    color: rgba(0, 0, 0, .9);
     line-height: 36px;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, .2);
   }
   .content {
     overflow: hidden;

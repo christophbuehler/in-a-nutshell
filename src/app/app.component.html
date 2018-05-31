@@ -5,10 +5,11 @@
 <div fxFlex class="topics mat-elevation-z4" fxLayout="column">
     <app-topic-block
         [topic]="topic"
-        *ngFor="let topic of mainTopics"></app-topic-block>
+        *ngFor="let topic of mainTopics | async"></app-topic-block>
     <span fxFlex></span>
-    <mat-toolbar class="bottom-toolbar" fxLayout="row">
+    <div fxLayout="row">
         <span fxFlex></span>
         <app-exam></app-exam>
-    </mat-toolbar>
+        <span fxFlex></span>
+    </div>
 </div>
