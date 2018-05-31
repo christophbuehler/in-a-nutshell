@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "learn-app": {
+    "in-a-nutshell": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/learn-app",
+            "outputPath": "dist/in-a-nutshell",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -54,18 +54,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "learn-app:build"
+            "browserTarget": "in-a-nutshell:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "learn-app:build:production"
+              "browserTarget": "in-a-nutshell:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "learn-app:build"
+            "browserTarget": "in-a-nutshell:build"
           }
         },
         "test": {
@@ -99,7 +99,7 @@
         }
       }
     },
-    "learn-app-e2e": {
+    "in-a-nutshell-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -107,7 +107,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "learn-app:serve"
+            "devServerTarget": "in-a-nutshell:serve"
           }
         },
         "lint": {
@@ -122,5 +122,5 @@
       }
     }
   },
-  "defaultProject": "learn-app"
+  "defaultProject": "in-a-nutshell"
 }
