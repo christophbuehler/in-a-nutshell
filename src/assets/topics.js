@@ -1,6 +1,6 @@
 const topics = [
   /****************************************
-   * Biologie  
+   * Biologie
   ****************************************/
   {
     path: '',
@@ -53,100 +53,100 @@ const topics = [
     path: 'life-science/biologie/zellen',
     title: 'Tierische Zelle',
     body: `
-      - Zelle mit **Zellkern** (**Eucyte**).
-      - Besitzt keine **Zellwand**. Körper wird daher vom **Skelett** und **Muskeln** gehalten.
-      - Besitzt **Mitochondrien**, aber keine **Chloroplasten**.
-      - Tiere sind **heterotroph** (=sich von anderen ernährend).
-      - Tiere müssen sich bewegen, um Nahrung zu finden.
-      ![tierische-zelle.png](assets/tierische-zelle.png)
+- Zelle mit **Zellkern** (**Eucyte**).
+- Besitzt keine **Zellwand**. Körper wird daher vom **Skelett** und **Muskeln** gehalten.
+- Besitzt **Mitochondrien**, aber keine **Chloroplasten**.
+- Tiere sind **heterotroph** (=sich von anderen ernährend).
+- Tiere müssen sich bewegen, um Nahrung zu finden.
+![tierische-zelle.png](assets/tierische-zelle.png)
       `,
   },
   {
     path: 'life-science/biologie/zellen',
     title: 'Bausteine einer Zelle',
     body: `
-      #### **Zellwand**
-      - Nur bei Pflanzenzellen.
-      - Schützt und stützt.
+#### **Zellwand**
+- Nur bei Pflanzenzellen.
+- Schützt und stützt.
 
-      #### **Cytoplasma**
-      - Gesamter Bereich, der den **Zellkern** umgibt.
-      - Besteht mehrheitlich aus **Wasser** und vielen **Proteinen**.
-      - Somit ist das Cytoplasma dickflüssig bis gelartig.
+#### **Cytoplasma**
+- Gesamter Bereich, der den **Zellkern** umgibt.
+- Besteht mehrheitlich aus **Wasser** und vielen **Proteinen**.
+- Somit ist das Cytoplasma dickflüssig bis gelartig.
 
-      #### **Zellmembran**
-      - Regelt den **Stoffaustausch** zwischen den Zellen und ihrer Umgebung.
-      - Grenzt **Cytoplasma** ab.
-      - Ermöglicht Kommunikation zwischen den Zellen und ihrer Umgebung.
-      - Besteht aus einer **Lipid-Doppelschicht**.
-      ![zellmembran.png](assets/zellmembran.png)
+#### **Zellmembran**
+- Regelt den **Stoffaustausch** zwischen den Zellen und ihrer Umgebung.
+- Grenzt **Cytoplasma** ab.
+- Ermöglicht Kommunikation zwischen den Zellen und ihrer Umgebung.
+- Besteht aus einer **Lipid-Doppelschicht**.
+![zellmembran.png](assets/zellmembran.png)
 
-      #### **Zellkern**
-      - Träger des **Erbgutes**.
-      - Bewahrt Informationen für den Bau und Betrieb der Zelle.
-      - Steuert mit dieser Information die Entwicklung und Aktivität der Zelle.
-      - Verdoppelt das **Erbgut** vor der **Zellteilung**.
-      ![zellkern.png](assets/zellkern.png)
+#### **Zellkern**
+- Träger des **Erbgutes**.
+- Bewahrt Informationen für den Bau und Betrieb der Zelle.
+- Steuert mit dieser Information die Entwicklung und Aktivität der Zelle.
+- Verdoppelt das **Erbgut** vor der **Zellteilung**.
+![zellkern.png](assets/zellkern.png)
 
-      #### Endoplasmatisches Reticulum (ER)
-      - Ein System von Kanälen und flachen, sackartigen Hohlräumen.
-      - Wird durch eine **Membran** vom **Plasma** abgegrenzt.
-      - Man unterscheidet zwischen **rauem** und **glattem** ER. Das Raue ER ist eine Proteinfabrik. Das glatte ER trägt viele **Enzyme**.
-      - Herstellung von **Membranlipiden**.
-      - Stoffumwandlungen.
-      ![er.png](assets/er.png)
+#### Endoplasmatisches Reticulum (ER)
+- Ein System von Kanälen und flachen, sackartigen Hohlräumen.
+- Wird durch eine **Membran** vom **Plasma** abgegrenzt.
+- Man unterscheidet zwischen **rauem** und **glattem** ER. Das Raue ER ist eine Proteinfabrik. Das glatte ER trägt viele **Enzyme**.
+- Herstellung von **Membranlipiden**.
+- Stoffumwandlungen.
+![er.png](assets/er.png)
 
-      #### Golgi-Apparat (verbundene **Dictyosomen**)
-      - Dictyosomen sind Produktionsstätten, Zwischenlager sowie Sortier- und Versandzentralen von Stoffen, meist **Proteinen**.
-      ![golgi-apparat.png](assets/golgi-apparat.png)
+#### Golgi-Apparat (verbundene **Dictyosomen**)
+- Dictyosomen sind Produktionsstätten, Zwischenlager sowie Sortier- und Versandzentralen von Stoffen, meist **Proteinen**.
+![golgi-apparat.png](assets/golgi-apparat.png)
 
-      #### **Vesikel** (Tierzelle und Pflanzenzelle ) und **Vakuolen** (Pflanzenzelle)
-      - Zur Speicherung und zum Transport von Stoffen.
-      - Unterschieden wird
-        - Transportvesikel
-        - Lysosomen
-        - Nahrungsvakuole (mit **Zellsaft** gefüllte Vakuole)
+#### **Vesikel** (Tierzelle und Pflanzenzelle ) und **Vakuolen** (Pflanzenzelle)
+- Zur Speicherung und zum Transport von Stoffen.
+- Unterschieden wird
+  - Transportvesikel
+  - Lysosomen
+  - Nahrungsvakuole (mit **Zellsaft** gefüllte Vakuole)
 
-      #### **Ribosomen**
-      - Winzige Kügelchen am rauen ER.
-      - Aus **Proteinen** und **RNA**.
-      - Dienen als Proteinfabrik der Zelle.
+#### **Ribosomen**
+- Winzige Kügelchen am rauen ER.
+- Aus **Proteinen** und **RNA**.
+- Dienen als Proteinfabrik der Zelle.
 
-      #### **Cytoskelett**
-      - Ist ein Netzwerk feiner **Proteinfäden**.
-      - Stützt die Zelle und stabilisiert ihre innere Struktur durch die Verankerung der **Organellen**.
-      - Bestimmt die Form der Zelle wenn keine **Zellwand** vorhanden ist.
+#### **Cytoskelett**
+- Ist ein Netzwerk feiner **Proteinfäden**.
+- Stützt die Zelle und stabilisiert ihre innere Struktur durch die Verankerung der **Organellen**.
+- Bestimmt die Form der Zelle wenn keine **Zellwand** vorhanden ist.
 
-      #### **Chloroplasten**
-      - Nur in grünen Pflanzenteilen (Pflanzenzellen).
-      - Sie bilden und enthalten den grünen Farbstoff.
-      - Aufgabe: **Photosynthese**.
-      - Die Stapel heissen **Grana**.
-      - Das **Plasma** dazwischen **Stroma**.
-      ![chloroplasten.png](assets/chloroplasten.png)
+#### **Chloroplasten**
+- Nur in grünen Pflanzenteilen (Pflanzenzellen).
+- Sie bilden und enthalten den grünen Farbstoff.
+- Aufgabe: **Photosynthese**.
+- Die Stapel heissen **Grana**.
+- Das **Plasma** dazwischen **Stroma**.
+![chloroplasten.png](assets/chloroplasten.png)
 
-      #### **Mitochondrien**
-      - **Zellatmung** → Gewinnung von **Energie**
-      - Herstellung von **ATP**
-      - Energieumwandlung
-      - Abbau von **Glucose**
-      ![mitochondrien.png](assets/mitochondrien.png)
+#### **Mitochondrien**
+- **Zellatmung** → Gewinnung von **Energie**
+- Herstellung von **ATP**
+- Energieumwandlung
+- Abbau von **Glucose**
+![mitochondrien.png](assets/mitochondrien.png)
       `,
   },
   {
     path: 'life-science/biologie/zellen',
     title: 'Stofftransport',
     body: `
-    #### Zwei Wege
-    - Direkt durch die **Membran** ins **Plasma** und umgekehrt.
-    - Mithilfe von **Cytoplasma** in einer **Vakuole**.
-    
-    #### Energieaufwand beim Stofftransport
-    - **Passiver** Transport → braucht keine Energie → folgt dem Konzentrationsgefälle.
-    - **Aktiver** Transport → Energieaufwand nötig → gegen Konzentrationsgefälle.
-    
-    #### **Endocytose** und **Exocytose**
-    ![endocytose.png](assets/endocytose.png)
+#### Zwei Wege
+- Direkt durch die **Membran** ins **Plasma** und umgekehrt.
+- Mithilfe von **Cytoplasma** in einer **Vakuole**.
+
+#### Energieaufwand beim Stofftransport
+- **Passiver** Transport → braucht keine Energie → folgt dem Konzentrationsgefälle.
+- **Aktiver** Transport → Energieaufwand nötig → gegen Konzentrationsgefälle.
+
+#### **Endocytose** und **Exocytose**
+![endocytose.png](assets/endocytose.png)
     `,
   },
 
@@ -179,7 +179,7 @@ const topics = [
     body: `
     #### Wie wird geprüft?
     Zu einem Basistext werden praktische Aufgaben und theoretische Fragen gestellt.
-    
+
     #### Obligatorischer Prüfungsstoff
     - Arbeitstechnik des wissenschaftlichen Arbeitens
     - Verständlichkeit
@@ -189,7 +189,7 @@ const topics = [
     - Grundlagen der Kommunikationslehre
     - Texterschliessung auf inhaltlicher und stilistischer Ebene
     - Konstruktivismus
-    
+
     #### Fakultativer Prüfungsstoff (Spezialgebiete)
     ...
     `
@@ -269,7 +269,7 @@ const topics = [
     #### Unterscheidende Merkmale
     - Mittel der Manipulation
 	  - ersetzen Argumente
-    
+
     #### Details / Beispiele
     - Polemik: Angriff auf die Person um sie – und damit auch ihre Argumente – zu disqualifizieren.
     - Übertreibung, Pauschalierung:  Bsp: Alle Deutschen sind Raser.
@@ -278,9 +278,9 @@ const topics = [
     #### Bedeutung
 	  - Eigenen Standpunkt durchsetzen, wenn man keine oder die schwächeren Argumente hat.
 	  - Strategie: Arbeit auf der Gefühlsebene und mit Assoziationen.
-    
+
     #### Schluss
-	  - Unfair, unsachlich      
+	  - Unfair, unsachlich
     `
   },
   {
@@ -318,7 +318,7 @@ const topics = [
     - Appell
     - Dialektik
     - Empfängerbezug
-    - Gestik 
+    - Gestik
     - Jargon
     - Mimik
     - Non Verbale Zeichen
@@ -328,7 +328,7 @@ const topics = [
     - Rhetorik
     - Rhetorische Frage
     - Suggestivfrage
-    - Tabuisierung 
+    - Tabuisierung
     - Verbale Zeichen
     - Verbalstil
     `
@@ -371,7 +371,7 @@ const topics = [
 
     #### Unterscheidende Merkmale
     - Analysetool  von Sachtexten, v.a. informierenden Texten wie Berichte
-    
+
     #### Details / Beispiele
     - Problembeschreibung und Nennung der Akteure (bzw. Tabuisierung).
     - Ursachen (meist basierend auf einfacher Kausalität).
@@ -463,7 +463,7 @@ const topics = [
     body: `
     #### Elektrischer Strom
     U = R * I
-    
+
     #### Parallel- und Serieschaltung Ohmscher Widerstände
 
     #### Netzwerke: Kirchhoffsche Gesetze
